@@ -6,11 +6,11 @@ require 'api.php';
  	$data = $_REQUEST['data'];
 
  	if (data === 'database'){
- 		// echo getDataBase();
+ 		echo getDataBase();
     } elseif (data === 'json'){
-	    // echo getDataJson();
+	    echo getDataJson();
     } elseif (data === 'api'){
-	    // echo getDataApi();
+	    echo getDataApi();
     } else {
     	echo 'bad request';
     }
