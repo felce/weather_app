@@ -23,10 +23,10 @@ $(document).ready(function () {
 
             //TODO: Fill our page
             /*
-            >Current temperature
-            >Weather (ICON) < font awesome (sunny, rainy, snowy, cloudy)
-            >Time < unistump
-            >Object with {[time], [temperature], [weather])}
+            >cur_temp  текущая температура
+            >cur_weather (ICON) < font awesome (sunny, rainy, snowy, cloudy)
+            >cur_time < unistump
+            >Object with {[time]:value(unistamp), [temperature]:value, [weather])}
              */
         })
     }
