@@ -27,10 +27,10 @@ $(document).ready(function () {
 
 				}
 			}
-console.log($('.current-temperature')[0]);
+
       $('.date').html(toCurrentTime(result['cur_time']));
       $('.current-temperature').html(result['cur_temp']);
-      console.log(getimage(result['cur_weather']))
+
       $('#cur_weather_img').attr("src", 'icons/' + getimage(result['cur_weather']));
 		})
 	}
@@ -55,7 +55,6 @@ function toTime(dt) {
 
 
 function getimage(weather) {
-  console.log(weather);
   if (weather === 'sunny') {
     return '01-s.png';
   }else if (weather === 'rainy') {
