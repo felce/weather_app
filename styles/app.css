@@ -93,21 +93,13 @@ nav div.active {
 }
 
 .forecast-weather {
+    height: 48px;
     width: 50%;
-    float: left;
-    text-align: right;
+    display: inline-flex;
+    justify-content: flex-end;
 }
 
 .forecast-temperature, .forecast-icon {
+    height: 48px;
     font-weight: 800;
-    display: inline-block;
-}
-
-/*.forecast img {
-    max-width: 40px;
-}*/
-
-.forecast-icon svg {
-    width: 35px;
-    transform: translateY(31%);
 }
