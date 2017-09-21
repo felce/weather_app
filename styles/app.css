@@ -103,9 +103,9 @@ nav div.active {
     display: inline-block;
 }
 
-.forecast img {
+/*.forecast img {
     max-width: 40px;
-}
+}*/
 
 .forecast-icon svg {
     width: 35px;
