@@ -15,8 +15,7 @@ function getDataBase()
 		$result[$row['id']]['weather'] = checkWeather($row['rain_possibility'], $row['snow_posibility'], $row['clouds']);;
 	}
 
-	$result = json_encode($result, JSON_PRETTY_PRINT);
-	file_put_contents('test.json', $result);
+	$result = json_encode($result);
 	return $result;
 }
 
