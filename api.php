@@ -30,6 +30,7 @@ function selectOption($weathetText){
       'Clear'
   );
   $cloud = array(
+      'Some clouds',
       'Clouds and sun',
       'Mostly sunny',
       'Partly sunny',
