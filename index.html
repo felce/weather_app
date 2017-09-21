@@ -1,36 +1,39 @@
 <!doctype html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Weather</title>
-    <link rel="stylesheet" href="styles/app.css">
-    <link href="https://fonts.googleapis.com/css?family=Quicksand|Titillium+Web" rel="stylesheet">
-    <script src="scripts/jquery-3.2.1.min.js" defer></script>
-    <script src="scripts/app.js" defer></script>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="description" content="weather application">
+	<title>Weather</title>
+	<link rel="stylesheet" href="styles/css/font-awesome.min.css">
+	<link rel="stylesheet" href="styles/app.css">
+	<link href="https://fonts.googleapis.com/css?family=Quicksand|Titillium+Web" rel="stylesheet">
+	<script src="scripts/jquery-3.2.1.min.js" defer></script>
+	<script src="scripts/app.js" defer></script>
 </head>
 <body>
 <header>
-    <h1>Modern weather app</h1>
+	<h1>Modern weather app</h1>
 </header>
 <nav>
-    <div id="JSON_data" class="active">JSON</div>
-    <div id="DB_data">Database</div>
-    <div id="API_data">API</div>
+	<div id="JSON_data" class="active">JSON</div>
+	<div id="DB_data">Database</div>
+	<div id="API_data">API</div>
 </nav>
 <main>
-    <div class="container">
-        <div class="now clearfix">
-            <div class="all-50">
-                <div class="date"></div>
-                <div class="current-temperature"></div>
-            </div>
-        </div>
-        <div class="forecast">
-        </div>
-    </div>
+	<div class="container">
+		<div class="now clearfix">
+			<div class="all-50" id="all_50">
+				<div class="date" id="date"></div>
+				<div class="current-temperature" id="current_temperature"></div>
+			</div>
+		</div>
+		<div class="forecast" id="forecast">
+
+		</div>
+	</div>
 </main>
 </body>
 </html>
