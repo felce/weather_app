@@ -68,13 +68,13 @@ function toTime(dt) {
 
 function getimage(weather) {
 	if (weather === 'sunny') {
-		return '01-s.png';
+		return '01.png';
 	} else if (weather === 'rainy') {
-		return '18-s.png';
+		return '03.png';
 	} else if (weather === 'snowy') {
-		return '19-s.png';
+		return '04.png';
 	} else if (weather === 'cloudy') {
-		return '07-s.png';
+		return '02.png';
 	}
 }
 
