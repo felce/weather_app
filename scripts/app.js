@@ -21,26 +21,51 @@ $(document).ready(function () {
 		}, function (result) {
 			clearPage();
 			result = JSON.parse(result);
-			var date = new Date();
-			date.setTime(result['cur_time']*1000);
-			//формируем дату из get... и забрасываем ее на страницу
-			$('#current-temperature').text(result['cur_temp']);
 
 			for (var key in result){
 				if(typeof (result[key]) === 'object'){
 
 				}
 			}
-			//TODO: Fill our page
-			/*
-			>cur_temp  текущая температура
-			>cur_weather (ICON) < font awesome (sunny, rainy, snowy, cloudy)
-			>cur_time < unistump
-			>Object with future:{[time]:value(unistamp), [temperature]:value, [weather])}
-			 */
+console.log($('.current-temperature')[0]);
+      $('.date').html(toCurrentTime(result['cur_time']));
+      $('.current-temperature').html(result['cur_temp']);
+      console.log(getimage(result['cur_weather']))
+      $('#cur_weather_img').attr("src", 'icons/' + getimage(result['cur_weather']));
 		})
 	}
 });
+
+function toCurrentTime(dt) {
+  var d = new Date();
+  var time =  d.setTime(dt*1000);
+  var date = new Date(time);
+
+  var weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+  return weekday[date.getDay()] + '<br>' + date.getDate().toString() + "/" + date.getMonth().toString();
+}
+
+function toTime(dt) {
+  var d = new Date();
+  var time =  d.setTime(dt*1000);
+  var date = new Date(time);
+
+  return date.getHours().toString() + ":00";
+}
+
+
+function getimage(weather) {
+  console.log(weather);
+  if (weather === 'sunny') {
+    return '01-s.png';
+  }else if (weather === 'rainy') {
+    return '18-s.png';
+  }else if (weather === 'snowy') {
+    return '19-s.png';
+  }else if (weather === 'cloudy') {
+    return '06-s.png';
+  }
+}
 
 function clearPage() {
 	$('#forecast').html('');

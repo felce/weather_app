@@ -2,8 +2,8 @@
 <?php
 
 function getDataApi() {
-  $currentData = 'http://dataservice.accuweather.com/currentconditions/v1/324291?apikey=%09alYZfQLu3cjFWdW5RJjzmeEn6S7RvM3t&language=en-us&details=false';
-  $lastSixHoutslData = 'http://dataservice.accuweather.com/currentconditions/v1/324291/historical?apikey=%09alYZfQLu3cjFWdW5RJjzmeEn6S7RvM3t&language=en-us&details=false';
+  $currentData = 'http://dataservice.accuweather.com/currentconditions/v1/324291?apikey=%09VGKxqhCTusYatNsReKrJOqGv6DZDTsuo&language=en-us&details=false';
+  $lastSixHoutslData = 'http://dataservice.accuweather.com/currentconditions/v1/324291/historical?apikey=%09VGKxqhCTusYatNsReKrJOqGv6DZDTsuo&language=en-us&details=false';
   $lastData = file_get_contents($lastSixHoutslData);
   $lastjson = json_decode($lastData, true);
   $current = file_get_contents($currentData);
@@ -30,6 +30,7 @@ function selectOption($weathetText){
       'Clear'
   );
   $cloud = array(
+      'Clouds and sun',
       'Mostly sunny',
       'Partly sunny',
       'Intermittent clouds',

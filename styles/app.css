@@ -53,9 +53,13 @@ nav div.active {
 }
 
 .all-50 {
+    height: 222px;
     display: block;
     float: left;
     width: 50%;
+}
+.all-50 img {
+  margin-top: 60px;
 }
 
 .weather-icon {
