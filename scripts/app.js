@@ -1,4 +1,7 @@
 $(document).ready(function () {
+
+	getData('json');
+
 	$('#JSON_data').on('click', function (event) {
 		$('.active').removeClass('active');
 		$(this).addClass('active');
