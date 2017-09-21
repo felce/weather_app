@@ -89,11 +89,11 @@ nav div.active {
 
 .forecast-date {
     float: left;
-    width: 60%;
+    width: 50%;
 }
 
 .forecast-weather {
-    width: 40%;
+    width: 50%;
     float: left;
     text-align: right;
 }
@@ -103,7 +103,7 @@ nav div.active {
     display: inline-block;
 }
 
-.forecast-icon {
+.forecast img {
     max-width: 40px;
 }
 

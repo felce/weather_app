@@ -32,6 +32,20 @@ $(document).ready(function () {
       $('.current-temperature').html(result['cur_temp']);
 
       $('#cur_weather_img').attr("src", 'icons/' + getimage(result['cur_weather']));
+      for (i = 1; i < 7; i++) {
+        $('#forecast').append(
+        '<div class="hourly-forecast clearfix">' +
+                '<div class="forecast-date">' + toTime(result[i]['time']) + '</div>'+
+                '<div class="forecast-weather">' +
+                    '<div class="forecast-temperature">' + result[i]['temp'] + '&deg;</div>' +
+                    '<div class="forecast-icon">' +
+                        '<img id="cur_weather_img" height="45" src="' + 'icons/' + getimage(result[i]['weather']) + '">' +
+                    '</div>' +
+                '</div>' +
+            '</div>'
+          )
+
+      }
 		})
 	}
 });
