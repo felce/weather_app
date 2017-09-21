@@ -23,6 +23,7 @@ $(document).ready(function () {
 			data: dataType
 		}, function (result) {
 			clearPage();
+			console.log(result);
 			result = JSON.parse(result);
 
 			for (var key in result) {
