@@ -2,9 +2,10 @@
 require 'database.php';
 require 'json.php';
 require 'api.php';
-if (isset ($_REQUEST['data'])) {
-	$data = $_REQUEST['data'];
+if (isset ($_GET['data'])) {
+	$data = $_GET['data'];
 
+	header('Content-type:application/json');
 	if ($data === 'database') {
 		echo getDataBase();
 	} elseif ($data === 'json') {
@@ -12,6 +13,7 @@ if (isset ($_REQUEST['data'])) {
 	} elseif ($data === 'api') {
 		echo getDataApi();
 	} else {
-		echo 'bad request';
+		header_remove();
+		header($_SERVER['SERVER_PROTOCOL']. ' 400 Internal Server Error', true, 400);
 	}
 }

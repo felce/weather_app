@@ -10,17 +10,15 @@ function getDataApi()
 	$currentjson = json_decode($current, true);
 	$result = array(
 		'cur_time' => $currentjson[0]['EpochTime'],
-		'cur_temp' => $currentjson[0]['Temperature']['Metric']['Value'],
+		'cur_temp' => (int)$currentjson[0]['Temperature']['Metric']['Value'],
 		'cur_weather' => selectOption($currentjson[0]['WeatherText'])
 	);
 	for ($i = 1; $i < 7; $i++) {
 		$result[$i]['time'] = $lastjson[$i - 1]['EpochTime'];
-		$result[$i]['temp'] = $lastjson[$i - 1]['Temperature']['Metric']['Value'];
+		$result[$i]['temp'] = (int)$lastjson[$i - 1]['Temperature']['Metric']['Value'];
 		$result[$i]['weather'] = selectOption($lastjson[$i - 1]['WeatherText']);
 	}
-
-	$resultstring = json_encode($result);
-	return $resultstring;
+	return json_encode($result);
 }
 
 function selectOption($weathetText)
@@ -71,13 +69,13 @@ function selectOption($weathetText)
 		'Mostly cloudy w/ Flurries',
 		'Mostly cloudy w/ Snow'
 	);
-	if (in_array($weathetText, $sun)) {
+	if (in_array($weathetText, $sun,true)) {
 		return 'sunny';
-	} elseif (in_array($weathetText, $cloud)) {
+	} elseif (in_array($weathetText, $cloud, true)) {
 		return 'cloudy';
-	} elseif (in_array($weathetText, $rain)) {
+	} elseif (in_array($weathetText, $rain, true)) {
 		return 'rainy';
-	} elseif (in_array($weathetText, $snow)) {
+	} elseif (in_array($weathetText, $snow, true)) {
 		return 'snowy';
 	} else {
 		return $weathetText;

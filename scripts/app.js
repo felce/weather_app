@@ -1,73 +1,63 @@
 $(document).ready(function () {
 
 	getData('json');
-
-	$('#JSON_data').on('click', function (event) {
+	$('.js-sources').click(function () {
 		$('.active').removeClass('active');
-		$(this).addClass('active');
-		getData('json');
-	});
-	$('#DB_data').on('click', function (event) {
-		$('.active').removeClass('active');
-		$(this).addClass('active');
-		getData('database');
-	});
-	$('#API_data').on('click', function (event) {
-		$('.active').removeClass('active');
-		$(this).addClass('active');
-		getData('api');
+		var sourceButton = $(this);
+		sourceButton.addClass('active');
+		getData(sourceButton.data('source'));
 	});
 
 	function getData(dataType) {
-		$.get('main.php', {
-			data: dataType
-		}, function (result) {
+		$.get('main.php?data=' + dataType, function (result) {
 			clearPage();
-			console.log(result);
-			result = JSON.parse(result);
 
+			result = JSON.parse(result);
+			var weatherList = '';
 			for (var key in result) {
-				if (typeof (result[key]) === 'object') {
-					$('#forecast').append(
+				var weatherInfo = result[key];
+				if (typeof (weatherInfo) === 'object') {
+					weatherList = weatherList +
 						'<div class="hourly-forecast clearfix">' +
-						'<div class="forecast-date">' + toTime(result[key]['time']) + '</div>' +
+						'<div class="forecast-date">' + toTime(weatherInfo['time']) + '</div>' +
 						'<div class="forecast-weather">' +
-						'<div class="forecast-temperature">' + result[key]['temp'] + '&deg;</div>' +
+						'<div class="forecast-temperature">' + weatherInfo['temp'] + '&deg;</div>' +
 						'<div class="forecast-icon">' +
-						'<img id="cur_weather_img" height="45" src="' + 'icons/' + getimage(result[key]['weather']) + '">' +
+						'<img id="cur_weather_img" height="45" src="' + 'icons/' + getImage(weatherInfo['weather']) + '">' +
 						'</div>' +
 						'</div>' +
-						'</div>'
-					)
+						'</div>';
+
 				}
 			}
+			$('#forecast').append(weatherList);
 
 			$('.date').html(toCurrentTime(result['cur_time']));
 			$('.current-temperature').html(result['cur_temp']);
-			$('#cur_weather_img').attr("src", 'icons/' + getimage(result['cur_weather']));
+			$('#cur_weather_img').attr('src', 'icons/' + getImage(result['cur_weather']));
 		})
 	}
 });
 
-function toCurrentTime(dt) {
-	var d = new Date();
-	var time = d.setTime(dt * 1000);
-	var date = new Date(time);
+var weekday = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
-	var weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-	return weekday[date.getDay()] + '<br>' + date.getDate().toString() + "/" + date.getMonth().toString();
+function toCurrentTime(seconds) {
+	var date = new Date(seconds * 1000);
+
+	return weekday[date.getDay()] + '<br>' + date.getDate() + "/" + date.getMonth();
 }
 
-function toTime(dt) {
-	var d = new Date();
-	var time = d.setTime(dt * 1000);
-	var date = new Date(time);
+function toTime(seconds) {
+	var date = new Date(seconds * 1000);
 
-	return date.getHours().toString() + ":00";
+	return addZero(date.getHours()) + ":00 " + weekday[date.getDay()] + " " + date.getDate() + "/" + date.getMonth();
 }
 
+function addZero(time) {
+	return time < 10 ? '0' + time : time;
+}
 
-function getimage(weather) {
+function getImage(weather) {
 	if (weather === 'sunny') {
 		return '01.png';
 	} else if (weather === 'rainy') {

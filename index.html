@@ -18,9 +18,9 @@
 	<h1>Modern weather app</h1>
 </header>
 <nav>
-	<div id="JSON_data" class="active">JSON</div>
-	<div id="DB_data">Database</div>
-	<div id="API_data">API</div>
+	<div data-source="json" id="JSON_data" class="active js-sources">JSON</div>
+	<div data-source="database" id="DB_data" class="js-sources">Database</div>
+	<div data-source="api" id="API_data" class="js-sources">API</div>
 </nav>
 <main>
 	<div class="container">
@@ -34,7 +34,6 @@
 			</div>
 		</div>
 		<div class="forecast" id="forecast">
-
 		</div>
 	</div>
 </main>

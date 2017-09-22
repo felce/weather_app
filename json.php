@@ -11,31 +11,26 @@ function getDataJson()
 		if ($index === 0) {
 			$data['cur_time'] = $value['dt'];
 			$data['cur_temp'] = (int)$value['main']['temp'] - 273;
-			$data['cur_weather'] = checkJsonWeather($value['weather']['main']);
+			$data['cur_weather'] = getPrettyWeather($value['weather']['main']);
 		} else {
 			$data[$index]['time'] = $value['dt'];
 			$data[$index]['temp'] = (int)$value['main']['temp'] - 273;
-			$data[$index]['weather'] = checkJsonWeather($value['weather']['main']);
+			$data[$index]['weather'] = getPrettyWeather($value['weather']['main']);
 		}
 		$index++;
 	}
-
-	$data = json_encode($data, JSON_PRETTY_PRINT);
-	return $data;
+	return json_encode($data);
 }
 
-function checkJsonWeather($json_weather)
+function getPrettyWeather($json_weather)
 {
-
-	static $weather = ['sunny', 'rainy', 'snowy', 'cloudy'];
 	if ($json_weather === 'Clear') {
-		return $weather[0];
+		return 'sunny';
 	} elseif ($json_weather === 'Rain') {
-		return $weather[1];
+		return 'rainy';
 	} elseif ($json_weather === 'Clouds') {
-		return $weather[3];
+		return 'cloudy';
 	} else {
-		return $weather[0];
+		return 'snowy';
 	}
 }
-
