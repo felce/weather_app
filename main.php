@@ -14,6 +14,6 @@ if (isset ($_GET['data'])) {
 		echo getDataApi();
 	} else {
 		header_remove();
-		header($_SERVER['SERVER_PROTOCOL']. ' 400 Internal Server Error', true, 400);
+		header($_SERVER['SERVER_PROTOCOL']. ' 400 Bad Request', true, 400);
 	}
 }
