@@ -1,4 +1,4 @@
-#connect to DB
+# connect to DB
 
 First of all you must import weather.sql to sql server.
 

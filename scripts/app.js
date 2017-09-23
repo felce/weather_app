@@ -44,13 +44,13 @@ var weekday = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday',
 function toCurrentTime(seconds) {
 	var date = new Date(seconds * 1000);
 
-	return weekday[date.getDay()] + '<br>' + date.getDate() + "/" + date.getMonth();
+	return weekday[date.getDay()] + '<br>' + date.getDate() + '/' + date.getMonth();
 }
 
 function toTime(seconds) {
 	var date = new Date(seconds * 1000);
 
-	return addZero(date.getHours()) + ":00 " + weekday[date.getDay()] + " " + date.getDate() + "/" + date.getMonth();
+	return addZero(date.getHours()) + ':00 ' + weekday[date.getDay()] + ' ' + date.getDate() + '/' + date.getMonth();
 }
 
 function addZero(time) {
