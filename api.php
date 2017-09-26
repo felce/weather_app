@@ -9,12 +9,12 @@ function getDataApi()
 	$currentJson = json_decode($current, true);
 	$result = array(
 		'cur_time' => $currentJson[0]['EpochTime'],
-		'cur_temp' => $currentJson[0]['Temperature']['Metric']['Value'],
+		'cur_temp' => (int)$currentJson[0]['Temperature']['Metric']['Value'],
 		'cur_weather' => selectOption($currentJson[0]['WeatherText'])
 	);
 	for ($i = 1; $i < 7; $i++) {
 		$result[$i]['time'] = $lastJson[$i - 1]['EpochTime'];
-		$result[$i]['temp'] = $lastJson[$i - 1]['Temperature']['Metric']['Value'];
+		$result[$i]['temp'] = (int)$lastJson[$i - 1]['Temperature']['Metric']['Value'];
 		$result[$i]['weather'] = selectOption($lastJson[$i - 1]['WeatherText']);
 	}
 
