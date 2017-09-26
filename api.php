@@ -1,8 +1,8 @@
 <?php
 function getDataApi()
 {
-	$currentData = 'http://dataservice.accuweather.com/currentconditions/v1/324291?apikey=%09P3C5bSy30kXkmZ58O33ZkGthRsw2Cjqj&language=en-us&details=false';
-	$lastSixHoutslData = 'http://dataservice.accuweather.com/currentconditions/v1/324291/historical?apikey=%09P3C5bSy30kXkmZ58O33ZkGthRsw2Cjqj&language=en-us&details=false';
+	$currentData = 'http://dataservice.accuweather.com/currentconditions/v1/324291?apikey=%09IPibLDOp87eeRwUoHGvdLJGgvktCY68s&language=en-us&details=false';
+	$lastSixHoutslData = 'http://dataservice.accuweather.com/currentconditions/v1/324291/historical?apikey=%09IPibLDOp87eeRwUoHGvdLJGgvktCY68s&language=en-us&details=false';
 	$lastData = file_get_contents($lastSixHoutslData);
 	$lastJson = json_decode($lastData, true);
 	$current = file_get_contents($currentData);
