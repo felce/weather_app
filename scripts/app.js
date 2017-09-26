@@ -11,7 +11,7 @@ $(document).ready(function () {
 	function getData(dataType) {
 		$.get('main.php?data=' + dataType, function (result) {
 			clearPage();
-
+			console.log(result);
 			var weatherList = '';
 			for (var key in result) {
 				var weatherInfo = result[key];
