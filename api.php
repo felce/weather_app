@@ -17,8 +17,8 @@ function getDataApi()
 		$result[$i]['temp'] = $lastjson[$i - 1]['Temperature']['Metric']['Value'];
 		$result[$i]['weather'] = selectOption($lastjson[$i - 1]['WeatherText']);
 	}
-	$resultstring = json_encode($result);
-	return $resultstring;
+
+	return json_encode($result);
 }
 
 function selectOption($weathetText)
