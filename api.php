@@ -28,7 +28,7 @@ function selectOption($weathetText)
 		'Sunny',
 		'Clear'
 	);
-	$cloud = array(
+	$cloud = [
 		'Some clouds',
 		'Clouds and sun',
 		'Mostly sunny',
@@ -43,8 +43,8 @@ function selectOption($weathetText)
 		'Intermittent clouds',
 		'Hazy moonlight',
 		'Mostly cloudy'
-	);
-	$rain = array(
+	];
+	$rain = [
 		'Showers',
 		'Mostly cloudy w/ Showers',
 		'Partly sunny w/ Showers',
@@ -58,8 +58,8 @@ function selectOption($weathetText)
 		'Mostly cloudy w/ T-Storms',
 		'Sleet',
 		'Freezing rain'
-	);
-	$snow = array(
+	];
+	$snow = [
 		'Flurries',
 		'Mostly cloudy w/ Flurries',
 		'Partly Sunny w/ Flurries',
@@ -68,7 +68,7 @@ function selectOption($weathetText)
 		'Rain and snow',
 		'Mostly cloudy w/ Flurries',
 		'Mostly cloudy w/ Snow'
-	);
+	];
 	if (in_array($weathetText, $sun,true)) {
 		return 'sunny';
 	} elseif (in_array($weathetText, $cloud, true)) {
