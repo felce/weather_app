@@ -4,18 +4,18 @@ function getDataApi()
 	$currentData = 'http://dataservice.accuweather.com/currentconditions/v1/324291?apikey=%09P3C5bSy30kXkmZ58O33ZkGthRsw2Cjqj&language=en-us&details=false';
 	$lastSixHoutslData = 'http://dataservice.accuweather.com/currentconditions/v1/324291/historical?apikey=%09P3C5bSy30kXkmZ58O33ZkGthRsw2Cjqj&language=en-us&details=false';
 	$lastData = file_get_contents($lastSixHoutslData);
-	$lastjson = json_decode($lastData, true);
+	$lastJson = json_decode($lastData, true);
 	$current = file_get_contents($currentData);
-	$currentjson = json_decode($current, true);
+	$currentJson = json_decode($current, true);
 	$result = array(
-		'cur_time' => $currentjson[0]['EpochTime'],
-		'cur_temp' => $currentjson[0]['Temperature']['Metric']['Value'],
-		'cur_weather' => selectOption($currentjson[0]['WeatherText'])
+		'cur_time' => $currentJson[0]['EpochTime'],
+		'cur_temp' => $currentJson[0]['Temperature']['Metric']['Value'],
+		'cur_weather' => selectOption($currentJson[0]['WeatherText'])
 	);
 	for ($i = 1; $i < 7; $i++) {
-		$result[$i]['time'] = $lastjson[$i - 1]['EpochTime'];
-		$result[$i]['temp'] = $lastjson[$i - 1]['Temperature']['Metric']['Value'];
-		$result[$i]['weather'] = selectOption($lastjson[$i - 1]['WeatherText']);
+		$result[$i]['time'] = $lastJson[$i - 1]['EpochTime'];
+		$result[$i]['temp'] = $lastJson[$i - 1]['Temperature']['Metric']['Value'];
+		$result[$i]['weather'] = selectOption($lastJson[$i - 1]['WeatherText']);
 	}
 
 	return json_encode($result);
